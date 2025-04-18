@@ -17,8 +17,8 @@ public interface PrenotazioneRepository extends JpaRepository<Prenotazione, Long
 
     Page<Prenotazione> findByDipendente(Dipendente dipendente, Pageable pageable);
 
-    @Query("SELECT CASE WHEN COUNT(b) > 0 THEN true ELSE false END FROM Booking b WHERE b.employee = :employee AND b" +
-            ".trip.date = :date")
+    @Query("SELECT CASE WHEN COUNT(p) > 0 THEN true ELSE false END FROM Prenotazione p WHERE p.dipendente = :dipendente AND p" +
+            ".viaggio.data = :data")
     boolean checkIfDipendenteIsNotAvailable(Dipendente dipendente, LocalDate date);
 }
 

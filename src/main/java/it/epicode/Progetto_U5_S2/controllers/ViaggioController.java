@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/trips")
+@RequestMapping("/viaggi")
 public class ViaggioController {
     @Autowired
     private ViaggioService viaggioService;
@@ -36,7 +36,7 @@ public class ViaggioController {
         return viaggioService.saveViaggio(body);
     }
 
-    @PatchMapping("/{tripId}/status")
+    @PatchMapping("/{viaggioId}/stato")
     public Viaggio modifyStatus(@PathVariable Long viaggioId, @RequestBody @Validated StatoDTO body,
                                 BindingResult bindingResult) {
         if (bindingResult.hasErrors())
@@ -44,12 +44,12 @@ public class ViaggioController {
         return viaggioService.findByIdAndUpdateStato(viaggioId, body);
     }
 
-    @GetMapping("/{tripId}")
+    @GetMapping("/{viaggioId}")
     public Viaggio getSingleTrip(@PathVariable Long viaggioId) {
         return viaggioService.findViaggioById(viaggioId);
     }
 
-    @PutMapping("/{tripId}")
+    @PutMapping("/{viaggioId}")
     public Viaggio modifyTrip(@PathVariable Long viaggioId, @RequestBody @Validated ViaggioDTO body,
                               BindingResult bindingResult) {
         if (bindingResult.hasErrors())
@@ -57,7 +57,7 @@ public class ViaggioController {
         return viaggioService.findViaggioByIdAndUpdate(viaggioId, body);
     }
 
-    @DeleteMapping("/{tripId}")
+    @DeleteMapping("/{viaggioId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTrip(@PathVariable Long viaggioId) {
         viaggioService.findViaggioByIdAndDelete(viaggioId);

@@ -16,7 +16,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/bookings")
+@RequestMapping("/prenotazione")
 public class PrenotazioneController {
     @Autowired
     private PrenotazioneService prenotazioneService;
@@ -41,12 +41,12 @@ public class PrenotazioneController {
         return prenotazioneService.savePrenotazione(body);
     }
 
-    @GetMapping("/{bookingId}")
+    @GetMapping("/{prenotazioneId}")
     public Prenotazione getSingleBooking(@PathVariable Long prenotazioneId) {
         return prenotazioneService.findPrenotazioniById(prenotazioneId);
     }
 
-    @DeleteMapping("/{bookingId}")
+    @DeleteMapping("/{prenotazioneId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBooking(@PathVariable Long prenotazioneId) {
         prenotazioneService.findPrenotazioniByIdAndDelete(prenotazioneId);

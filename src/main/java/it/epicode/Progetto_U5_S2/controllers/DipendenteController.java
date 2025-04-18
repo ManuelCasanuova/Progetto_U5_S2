@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/dipendenti")
 public class DipendenteController {
     @Autowired
     private DipendenteService dipendenteService;
@@ -38,7 +38,7 @@ public class DipendenteController {
         return dipendenteService.saveDipendente(body);
     }
 
-    @GetMapping("/{employeeId}")
+    @GetMapping("/{dipendenteId}")
     public Dipendente findEmployee(@PathVariable Long dipendenteId) {
         return dipendenteService.findDipendenteById(dipendenteId);
     }
@@ -54,13 +54,13 @@ public class DipendenteController {
         return dipendenteService.findDipendenteByIdAndUpdate(dipendenteId, body);
     }
 
-    @DeleteMapping("/{employeeId}")
+    @DeleteMapping("/{dipendenteId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEmployee(@PathVariable Long dipenteId) {
         dipendenteService.findDipendenteByIdAndDelete(dipenteId);
     }
 
-    @PatchMapping("/{employeeId}/avatar")
+    @PatchMapping("/{dipendenteId}/avatar")
     public void uploadAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable Long dipenteId) {
         dipendenteService.uploadAvatar(file, dipenteId);
     }
